@@ -16,7 +16,7 @@ def index():
         enumerate=enumerate)
 
 
-@app.route('/archive')
+@app.route('/archive/')
 def archive():
     return render_template(
         'archive.html',
@@ -24,12 +24,12 @@ def archive():
         enumerate=enumerate)
 
 
-@app.route('/post/<int:index>')
+@app.route('/post/<int:index>/')
 def post(index):
     return render_template('content.html', content=Posts(POST_PATH).sorted()[index].render())
 
 
-@app.route('/about')
+@app.route('/about/')
 def about():
     with open(CONTENT_PATH + '/about.md') as f:
         return render_template('content.html', content=md.render(f.read()))
