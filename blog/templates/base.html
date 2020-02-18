@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fox Files</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pygments.css') }}">
+    <link rel='shortcut icon' type='image/x-icon' href="{{ url_for('static', filename='favicon.ico') }}" />
+  </head>
+  <body>
+    <article class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-2-desktop is-3-tablet">
+            {% include "nav.html" %}
+          </div>
+          <hr>
+          <div class="column">
+            {% block body %}
+            {% endblock %}
+            <footer class="footer">
+              <div class="content has-text-centered">
+                <p>
+                  © Copyright 2020 Hayden Hughes
+                </p>
+                <p>
+                   This blog uses <a href="https://mutant.tech">Mutant Standard</a> emoji.
+                </p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </article>
+  </body>
+</html>
