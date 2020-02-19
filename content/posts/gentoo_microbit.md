@@ -2,7 +2,6 @@
 *February 9, 2019*
 
 ![](/static/images/microbit_repl.png)
-
 Thanks to the [National Computer Science School](https://ncss.edu.au/) I'm
 now the proud owner of a [BBC micro:bit](https://microbit.org/). The
 micro:bit has the ability to provide a python REPL over USB serial but
