@@ -24,9 +24,9 @@ def archive():
         enumerate=enumerate)
 
 
-@app.route('/post/<int:index>/')
-def post(index):
-    return render_template('content.html', content=Posts(POST_PATH).sorted()[index].render())
+@app.route('/post/<name>/')
+def post(name):
+    return render_template('content.html', content=Posts(POST_PATH).get(name).render())
 
 
 @app.route('/about/')

@@ -6,9 +6,9 @@
       Archive
     </p>
     <ul class="menu-list">
-      {% for index, post in enumerate(posts) %}
+      {% for post in posts %}
       <li>
-         <a href="{{ url_for('post', index=index) }}">{{ post.title() }} &nbsp &nbsp <em>(<time>{{ post.date().strftime("%B %-d, %Y") }}</time>)</em></a>
+         <a href="{{ url_for('post', name=post.name) }}">{{ post.title() }} &nbsp &nbsp <em>(<time>{{ post.date().strftime("%B %-d, %Y") }}</time>)</em></a>
       </li>
       {% endfor %}
     </ul>

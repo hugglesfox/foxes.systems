@@ -2,12 +2,12 @@
 
 {% block body %}
   <p class="menu-label">Posts</p>
-  {% for index, post in enumerate(posts) %}
+  {% for post in posts %}
     <div class="box">
-      <a href="{{ url_for('post', index=index) }}"><p class="title is-4">{{ post.title() }}</p></a>
+      <a href="{{ url_for('post', name=post.name) }}"><p class="title is-4">{{ post.title() }}</p></a>
       <br>
       <p>
-        {{ post.description()|safe }} <a href="{{ url_for('post', index=index) }}">Read More</a>
+        {{ post.description()|safe }} <a href="{{ url_for('post', name=post.name) }}">Read More</a>
       </p>
       <br>
       <span class="icon">
