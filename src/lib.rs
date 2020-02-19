@@ -22,7 +22,7 @@ pub fn title(content: &str) -> Option<String> {
         .filter(|s| s.starts_with("#"))
         .next()
         .and_then(|s| s.strip_prefix("# "))
-        .map(|s| s.to_string())
+        .map(|s| s.chars().filter(|c| &c.to_string() != "\\").collect::<String>())
 }
 
 /// Extract the first line beginning with a * to be used as the date
