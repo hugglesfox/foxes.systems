@@ -16,8 +16,6 @@ The basic structure is as follows:
 // like so
 *Month(March) day_num(1), Year(2018)*
 
-// A header image can be inserted here if wanted
-
 // The first paragraph is used for the description/summary
 Insert some content here. This will be shown on the home page as a description.
 
@@ -40,7 +38,7 @@ The `public` directory should now contain a static version of the blog
 ## Running dev server
 
 ```
-$ FLASK_DEBUG=True FLASK_APP=blog flask run 
+$ FLASK_DEBUG=True FLASK_APP=blog flask run
 ```
 
 ## Compiling stuffs

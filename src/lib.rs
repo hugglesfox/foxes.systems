@@ -43,7 +43,7 @@ pub fn description(content: &str) -> Option<String> {
     content
         .lines()
         .skip_while(|s| {
-            s.starts_with("#") | s.starts_with("*") | s.starts_with("![]") | { s == &"" }
+            s.starts_with("#") | s.starts_with("*") | { s == &"" }
         })
         .collect::<Vec<&str>>()
         .split(|s| s == &"")
