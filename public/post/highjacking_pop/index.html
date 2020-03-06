@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fox Files</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/pygments.css">
+    <link rel='shortcut icon' type='image/x-icon' href="/static/favicon.ico" />
+  </head>
+  <body>
+    <article class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-2-desktop is-3-tablet">
+            
+  <a href="/">
+    <p class="title has-text-centered-mobile">
+      Fox Files
+    </p>
+  </a>
+
+  <br>
+
+  <div class="container has-text-centered-mobile">
+    <p class="menu-label">
+      Contents
+    </p>
+    <div class="columns has-text-centered-mobile is-gapless is-mobile is-multiline">
+      <div class="column is-full-desktop">
+        <a class="button is-text" href="/about/">About</a>
+      </div>
+      <div class="column is-full-desktop">
+        <a class="button is-text" href="/">Posts</a>
+      </div>
+      <div class="column is-full-desktop">
+        <a class="button is-text" href="/archive/">Archive</a>
+      </div>
+    </div>
+    <p class="menu-label">
+      Socials
+    </p>
+    <a rel="me" class="button is-white is-large" href="https://linuxrocks.online/@Huggles">
+      <span class="icon">
+        <i class="fa fa-mastodon"></i>
+      </span>
+    </a>
+    <a class="button is-white is-large" href="https://github.com/hugglesfox">
+      <span class="icon">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+    <a class="button is-white is-large" href="https://gitlab.com/huggles">
+      <span class="icon">
+        <i class="fa fa-gitlab"></i>
+      </span>
+    </a>
+    <a class="button is-white is-large" href="https://codeberg.org/hayden">
+      <span class="icon">
+        <i class="fa fa-gitea"></i>
+      </span>
+    </a>
+    <a class="button is-white is-large" href="https://keybase.io/huggles">
+      <span class="icon">
+        <i class="fa fa-keybase"></i>
+      </span>
+    </a>
+    <a class="button is-white is-large" href="https://matrix.to/#/@huggles:matrix.org">
+      <span class="icon">
+        <i class="fa fa-matrix-org"></i>
+      </span>
+    </a>
+  </div>
+
+          </div>
+          <hr>
+          <div class="column">
+            
+  <div class="content">
+    <h1>Hijacking Pop!_OS</h1>
+<p><em>February 19, 2020</em></p>
+<p><img src="/static/images/pop-debian.png" alt="">
+The boring but descriptive title: <em>Configuring and installing the Pop!_OS
+theming and tools on Debian based distributions other then Pop!_OS.</em></p>
+<p>I 🖤 the work the system76 team has put into the theming and tooling for
+Pop. <code>system76-power</code> is super handy and the <code>pop-gtk</code> theme is the only theme
+I can comfortably daily drive but the lack of customizability of the drive
+parition layout and file system types to enable things such as hibernation
+or zfs during the install and the unstablity I have been experiencing
+whilst using the distro's backported nvidia drivers leaves me in a situation
+where I want to love Pop but have to look else where. But why not have both
+a different underlying distro and the Pop tooling and theming!</p>
+<p>So that's what I did.</p>
+<p>Starting out with a fresh Debian Buster install with gnome installed, (I like to
+use the package <code>gnome-core</code> because it doesn't install any of the gnome
+recommended apps which I never use such as <code>gnome-contacts</code>)
+the first thing I did was add the Pop ppa. Now before you scream
+"<a href="https://wiki.debian.org/DontBreakDebian">Don't break Debian!</a>", as long as
+the repo is correctly pinned and we don't try to install anything potentially
+system breaking such as the Nvidia drivers, kernel, gnome, etc.
+the system will be fine as it will mostly just be harmless configuration files
+and some theming.</p>
+<pre><code># apt-add-repository ppa:system76/pop
+# apt update</code></pre><p>Now lets make sure no packages are installed from the Pop ppa unless
+explicitly installed.</p>
+<p><code>/etc/apt/preferences.d/pop</code></p>
+<pre><code>Package: *
+Pin: release o=LP-PPA-system76-pop
+Pin-Priority: 100</code></pre><p>Now Pop!_OS is awesome cos all of the distro configuration is handled by
+Debian packages which on install configure the system. All of Pop's custom
+packages can be found on the <a href="https://github.com/pop-os">pop-os github</a> but
+the most interesting one imo is
+<a href="https://github.com/pop-os/default-settings">default-settings</a>. The
+<code>default-settings</code> package not only contains Pop's gconf settings but it also
+depends on the rest of the theming acting as a nice metapackage.</p>
+<p>One slight problem with <code>default-settings</code> though is that it tries to add
+the Pop propriety repo automatically which fails on Debian because <code>buster</code>
+isn't a valid Ubuntu version code name. Thus I have created a fork which
+removes this feature
+(<a href="https://github.com/hugglesfox/pop-default-settings">github.com/hugglesfox/pop-default-settings</a>)
+but that means that it needs to be manually compiled.</p>
+<pre><code>$ git clone https://github.com/hugglesfox/pop-default-settings
+$ cd pop-default-settings
+$ debuild -us -uc
+$ sudo apt install ../pop-default-settings*.deb</code></pre><p>Now we have pulled in all the pop theming we just need to do a few more tweaks
+to make it perfect such as setting the gtk and gnome shell theme in the
+<code>gnome-tweak-tool</code></p>
+<p><img src="/static/images/pop-debian-theme-tweaks.png" alt=""></p>
+<p>and whilst in the tweak tool, setting the fonts to the
+<a href="https://github.com/pop-os/fonts#recommendations">recommended fonts</a></p>
+<p><img src="/static/images/pop-debian-fonts.png" alt=""></p>
+<p>That's about it. I have also successfully tried this on a custom Ubuntu install
+with ZFS on root (my current set up). Isn't FOSS great!?</p>
+<p>Happy hacking</p>
+<p>H</p>
+
+  </div>
+
+            <footer class="footer">
+              <div class="content has-text-centered">
+                <p>
+                  © Copyright 2020 Hayden Hughes
+                </p>
+                <p>
+                   This blog uses <a href="https://mutant.tech">Mutant Standard</a> emoji.
+                </p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </article>
+  </body>
+</html>
