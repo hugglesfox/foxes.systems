@@ -11,4 +11,4 @@ more about me) then please go to
 [my info page](https://hayden.foxes.systems).
 
 ## Contact Me
-Feel free to email hayden@firemail.cc and my PGP key is [here](/static/pgp.key). Otherwise I'm on [Mastodon](https://linuxrocks.online/@Huggles), Discord (Huggles#8821) and [Matrix](https://matrix.to/#/@huggles:matrix.org).
+Feel free to email hayden@foxes.systems and my PGP key is [here](/static/pgp.key). Otherwise I'm on [Mastodon](https://linuxrocks.online/@Huggles), Discord (Huggles#8821) and [Matrix](https://matrix.to/#/@huggles:matrix.org).
