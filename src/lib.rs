@@ -1,7 +1,5 @@
 //! Python was annoying me so I wrote the post parser in rust
 
-#![feature(str_strip)]
-
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
 
