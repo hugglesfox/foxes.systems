@@ -5,10 +5,7 @@ solution to, so I created a blog to solve that.
 
 ## # whoami
 
-Hi! I'm Hayden. I'm a fox who’s trying to be free - as in freedom not free as
-in beer - in a modern world. If your looking to hire me (or just want to know
-more about me) then please go to
-[my info page](https://hayden.foxes.systems).
+Hi! I'm Hayley (aka Huggles); A fox mashing keyboards trying to learn all things tech. Currently I'm interested in Linux, Python, Rust, Docker, etc.
 
 ## Contact Me
-Feel free to email hayden@foxes.systems and my PGP key is [here](/static/pgp.key). Otherwise I'm on [Mastodon](https://linuxrocks.online/@Huggles), Discord (Huggles#8821) and [Matrix](https://matrix.to/#/@huggles:matrix.org).
+Feel free to shoot me an email at hayley@foxes.systems and if required, my PGP key is [CE4D78E2](/static/pgp.key). Otherwise I'm on [Mastodon](https://linuxrocks.online/@Huggles), Discord (Huggles#8821) and [Matrix](https://matrix.to/#/@huggles:matrix.org).
