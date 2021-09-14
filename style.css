@@ -15,22 +15,25 @@ body {
 	color: #444;
 }
 
-h1,h2,h3 {
+h1, h2, h3 {
 	/* Make headings a little tighter */
 	line-height: 1.2;
 }
 
 img {
-	/* Resize images */
+	/* Resize images as images don't respect the body max-width */
 	max-width: 100%;
 }
 
-pre,code {
+pre, code {
 	/* Visually differentiate code and preformatted text */
 	background: #fff;
+
+	/* Add scroll bars if needed */
+	overflow: auto;
 }
 
-footer,figcaption {
+footer, figcaption {
 	/* Stylize helper text */
 	text-align: center;
 	color: #666;
