@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Desgining for Readability</title>
+<h1>
+	Designing for Readability
+</h1>
+<p>
+	I recently stumbled upon some cool stuff which isn't on DuckDuckGo and
+	had a little time on my hands so I thought it would be a great time to
+	finally update my blog. So then I loaded it up and saw how ugly both
+	the styling and the code behind it were, must be time for a rewrite!
+	[1]
+<p>
+	Over the last few years since I last touched this blog post I have been
+	growing more and more grey hairs by switching to vim for all my text
+	editing and adopting plain text for basically everything due to it's
+	portability and readability (especially LaTeX). So decided I wanted my
+	blog to also plain text masterpiece with the design goals
+<h3>
+	I need to be able to read it
+</h3>
+<p>
+	I have some difficulty reading a lot of typography, especially
+	anything that's slabs of sans-serif with weird contrast (it's probably
+	undiagnosed dyslexia), so if I can comfortably read it, it's probably
+	half decently designed.
+<h3>
+	You need to be able to read it
+</h3>
+<p>
+	Meaning it should be able to be viewed however the user wishes and just
+	work, whether that be using firefox configured to use the opendyslexic
+	font, in a terminal via curl, on a 3DS outside in direct sunlight, etc.
+<h3>
+	The source code needs to be readable
+</h3>
+<p>
+	If I was going to write and edit posts directly in HTML, it needs to be
+	logically laid out and look nice in any text editor with the content
+	being the focus. Ideally the layout of the source code should closely
+	resemble the layout of the resulting content.
+<p>
+	So the solution here is to write everything in plain static HTML.
+	Although there's 2 slight problems with that
+<ol>
+	<li>
+		The HTML tag system can be very verbose, visually cluttering
+		the source
+	<li>
+		The default styling that modern browsers use is terribly
+		unreadable
+</ol>
+<h2>
+	Content structure
+</h2>
+<p>
+	I tried to keep the document structure as sane as possible, so things
+	like using h1 for the title, h2 for the section headers and h3 for
+	subsection headers. The only thing I did which might be seen as weird
+	is not use in text hyperlinks and instead use references. I've decided
+	that to keep things consistent, hyperlinks can only be used for site
+	navigation (also because anchor tags are long and ugly). To add to
+	that, I've decided to follow the Gopher and Gemini protocols in
+	requiring that each hyperlink has it's own line for the reasons stated
+	on the Gemini faq page: [2]
+<blockquote cite="https://gemini.circumlunar.space/docs/faq.gmi">
+	It encourages including only the most important or relevant links,
+	organising links into related lists, and giving each link a maximally
+	descriptive label without having to worry about whether or not that
+	label fits naturally into the flow of your main text.
+</blockquote>
+<h2>
+	Fixing the default styling
+</h2>
+<p>
+	I didn't want to have to use CSS, as ideally, how the content is
+	displayed should be up to the user but default HTML is so unreadable I
+	had to fix it.
+<p>
+	First up pure black on pure white is blindingly bright so I adopted the
+	colors used by the PaperColor vim theme. [3] I find light themes easier
+	to read in general but they also have the advantage of being readable
+	in a bright environment with lots of glare.
+<p>
+	Secondly long, left justified lines of text is a nightmare for
+	dyslexics, so first I set the maximum line width to 72 characters,
+	because that's that Python's style guide, PEP8, recommends for blocks
+	of text [4] and added some margins to center the text on the page.
+<p>
+	Next, Mozilla recommends that line spacing is set to at least 1.5 [4]
+	and I completely agree, so I set it to 1.6 but that makes headings look
+	weird so they're set to 1.2.
+<pre>
+<code>
+	I use a lot of code samples in this blog and so to visually separate
+	them from the rest of the content, they have a white background and
+	monospaced font
+</code>
+</pre>
+<p>
+	Yes that does mean that the contrast for code blocks aren't great but I
+	personally don't find monospaced font on a white background anywhere
+	near as offensive as serif or sans-serif font on a white background.
+<p>
+	Finally I bumped the font sizing up to 1.2em as firefox (and I think
+	most other browsers) default to a font size of 16px which isn't bad,
+	but personally I find the ~18px size which 1.2em gives you a to be a
+	bit more readable. Using em rather then a fixed px value means that the
+	page will still respect the browsers font size setting if the user
+	requires a larger or smaller font size. Also there's some CSS in there
+	to fix oversized images as images don't respect the body max-width.
+<p>
+	Everything else is left as default. Most importantly, the site will use
+	whatever fonts the browser is configured to use meaning if the user
+	prefers or requires certain fonts, that's what'll be used.
+<h2>
+	Abusing SGML
+</h2>
+<p>
+	So my main goal for keeping the source code readable is to focus on how
+	the content is presented and not have the HTML tags clutter the
+	content. So I indented all the text and made it so that each tag was on
+	it's own line. This way it's easy to ignore the html tags when reading
+	the content. I also wanted to keep boilerplate code to a minimum as I'm
+	not using a templating engine and it doesn't much value to the content.
+<p>
+	Luckily for me HTML is an implementation of the Standard Generalized
+	Markup Language (SGML) and the SGML standard states that opening and
+	closing tags which can be inferred, aren't required in the document. An
+	example of this is that in this page source, there aren't any head or
+	body tags, yet a head and body section is still created by the browser
+	when the HTML is being parsed. This is particularly handy because I
+	didn't want more then a single line separating consecutive paragraphs
+	for readability but I also didn't want to have to have more then one
+	tag per line. Hence why there's no closing paragraph tags in the
+	source.
+<p>
+	Whilst it may not look like it at first glance when compared to your
+	more traditional ways of creating a HTML file, this page is fully HTML
+	5 compatible and passes the W3C HTML Checker, [6] implementing many
+	recommended best practices such as setting the charset and lang.
+<h2>
+	References
+</h2>
+<ol>
+	<li> https://www.youtube.com/watch?v=xCGu5Z_vaps
+	<li> https://gemini.circumlunar.space/docs/faq.gmi
+	<li> https://github.com/NLKNguyen/papercolor-theme
+	<li> https://pep8.org/#maximum-line-length
+	<li> https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+	<li> https://validator.w3.org/
+</ol>
+<footer>
+<p>
+	Published 2021-09-14 <br>
+	Hayley Hughes &copy; CC BY-ND 4.0 
+<p>
+	<a href="../index.html">&lt;&lt; home</a>
+</footer>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Accessing the BBC micro:bit REPL on Gentoo</title>
+<h1>
+	Accessing the BBC micro:bit REPL on Gentoo
+</h1>
+<img src="../media/microbit_repl.png" alt="The micro:bit repl in a terminal"/>
+<p>
+	Thanks to the National Computer Science School, [1] I'm
+	now the proud owner of a BBC micro:bit. The micro:bit has the ability
+	to provide a python REPL over USB serial but when plugging it into my
+	Gentoo machine, the micro:bit doesn't show up in <code>/dev</code>.
+	What gives?
+<p>
+	Like most things, a kernel module is required to provide the drivers
+	for the USB serial interface. On first inspection you would think that
+	<code>CONFIG_USB_SERIAL_CONSOLE</code> is the correct module, but no.
+	The micro:bit's REPL is actually treated as a USB modem which requires
+	<code>CONFIG_USB_ACM</code> to be set.
+<h2>
+	Kernel Configuration
+</h2>
+<pre>
+<code>
+	Device Drivers --->
+	    [*]  USB Support --->
+	        <*>  USB Modem (CDC ACM) support
+</code>
+</pre>
+<p>
+	Now that the module is enabled, rebuild the kernel [2] and reboot. Once
+	rebooted plug in the micro:bit and there should be a new device in
+	<code>/dev</code> called <code>/dev/ttyACM0</code> (or something
+	similar). Now it's as simple as connecting to your micro:bit REPL using
+	your serial console client of choice!
+<pre>
+<code>
+	picocom /dev/ttyACM0 -b 115200
+</code>
+</pre>
+<p>
+	The micro:bit documentation as some more examples. [3]
+<h2>
+	References
+</h2>
+<ol>
+	<li>https://ncss.edu.au
+	<li>https://wiki.gentoo.org/wiki/Kernel/Rebuild
+	<li>https://microbit-micropython.readthedocs.io/en/latest/devguide/repl.html
+</ol>
+<footer>
+<p>
+	Published 2019-02-09 <br>
+	Hayley Hughes &copy; CC BY-ND 4.0 
+<p>
+	<a href="../index.html">&lt;&lt; home</a>
+</footer>
