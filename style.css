@@ -3,6 +3,9 @@ body {
 	margin: 5% auto;
 	max-width: 72ch;
 
+	/* Add some padding for mobile devices */
+	padding: 0 10px;
+
 	/* Make the font more readable for screen */
 	line-height: 1.6;
 	font-size: 1.2em;
