@@ -126,21 +126,78 @@
 	the content. I also wanted to keep boilerplate code to a minimum as I'm
 	not using a templating engine and it doesn't much value to the content.
 <p>
-	Luckily for me HTML is an implementation of the Standard Generalized
-	Markup Language (SGML) and the SGML standard states that opening and
-	closing tags which can be inferred, aren't required in the document. An
-	example of this is that in this page source, there aren't any head or
-	body tags, yet a head and body section is still created by the browser
-	when the HTML is being parsed. This is particularly handy because I
-	didn't want more then a single line separating consecutive paragraphs
-	for readability but I also didn't want to have to have more then one
-	tag per line. Hence why there's no closing paragraph tags in the
-	source.
+	Luckily HTML is an implementation of the Standard Generalized Markup
+	Language (SGML) and the SGML standard states that opening and closing
+	tags which can be inferred aren't required in the document. An example
+	of this is that in this page source, there aren't any head or body
+	tags, yet a head and body section is still created by the browser when
+	the HTML is being parsed. This is particularly handy because I didn't
+	want more then a single line separating consecutive paragraphs for
+	readability and I also didn't want to have to have more then one tag
+	per line. Hence why there's no closing paragraph tags in the source.
 <p>
-	Whilst it may not look like it at first glance when compared to your
-	more traditional ways of creating a HTML file, this page is fully HTML
-	5 compatible and passes the W3C HTML Checker, [6] implementing many
+	For an example
+<pre>
+<code>
+	&lt;!doctype html&gt;
+	&lt;html lang=&quot;en&quot;&gt;
+	&lt;meta charset=&quot;utf-8&quot; name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;../style.css&quot;&gt;
+	&lt;title&gt;Cloud Bread&lt;/title&gt;
+	&lt;h1&gt;
+		Cloud Bread
+	&lt;/h1&gt;
+	&lt;p&gt;
+		Cloud bread brooklyn kinfolk, plaid ramps celiac tumeric chia
+		authentic food truck. Ethical austin hashtag hexagon butcher,
+		succulents tumeric tousled. Migas organic iceland disrupt
+		shaman taiyaki master cleanse chambray, vice 8-bit ennui
+		pitchfork kitsch hell of. Helvetica cornhole normcore
+		portland. [1]
+	&lt;p&gt;
+		Kickstarter gochujang aesthetic etsy lomo cloud bread put a
+		bird on it. Enamel pin yr ethical, williamsburg letterpress
+		squid craft beer vinyl gochujang offal snackwave jean shorts.
+		Keffiyeh gastropub iceland four dollar toast prism organic.
+	&lt;h2&gt;
+		Blog Cronut
+	&lt;/h2&gt;
+	&lt;p&gt;
+		Blog cronut snackwave, vinyl iPhone 8-bit meh trust fund
+		unicorn sustainable cliche pitchfork. Keytar plaid snackwave
+		palo santo lo-fi tumblr, raw denim everyday carry pug austin
+		helvetica chillwave lumbersexual photo booth fingerstache.
+	&lt;h2&gt;
+		References
+	&lt;/h2&gt;
+	&lt;ol&gt;
+		&lt;li&gt; https://hipsum.co
+	&lt;/ol&gt;
+	&lt;footer&gt;
+	&lt;p&gt;
+		Published YYYY-MM-DD &lt;br&gt;
+		Hayley Hughes &amp;copy; CC BY-ND 4.0 
+	&lt;p&gt;
+		&lt;a href=&quot;../index.html&quot;&gt;&amp;lt;&amp;lt; home&lt;/a&gt;
+	&lt;/footer&gt;
+</code>
+</pre>
+<p>
+	Filler text curtosy of Hipsum.co
+<p>
+	Whilst it may not look like it at first glance when compared to the
+	more conventional ways of writing HTML, this page is fully HTML 5
+	compatible and passes the W3C HTML Checker, [6] implementing many
 	recommended best practices such as setting the charset and lang.
+<h2>
+	Conclusion
+</h2>
+<p>
+	I hope I have inspired others to also take a closer look at the
+	readability and accessibility of the content they create. Little things
+	such as using a serif font or increasing the line heights can make a
+	huge difference when it comes to making your content more accessible
+	for everyone.
 <h2>
 	References
 </h2>
@@ -154,7 +211,7 @@
 </ol>
 <footer>
 <p>
-	Published 2021-09-14 <br>
+	Published 2021-09-16 <br>
 	Hayley Hughes &copy; CC BY-ND 4.0 
 <p>
 	<a href="../index.html">&lt;&lt; home</a>
