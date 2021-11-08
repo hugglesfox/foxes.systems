@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+<title>Jailing BTRFS</title>
+<h1>
+	Jailing BTRFS
+</h1>
+<img src="../media/btrbk_jail.png" alt="A screenshot of the commands ls and clear not working in the jail but btrfs does">
+<p>
+	I've finally gotten around to fixing my backup system as for quite a
+	while I haven't had a functional backup system. I use btrfs for my root
+	filesystem and really like btrbk [1] as it's simple and mostly just
+	works. 
+<p>
+	Btrbk can use btrfs' built in send and receive commands to send
+	snapshots over SSH to a remote machine. This is great except btrbk
+	needs to run the btrfs recieve command as root so that it can create
+	files with the correct permissions. Whilst I'm sure btrbk is well
+	designed and all, I still don't really want to give a perl script full
+	root access on the backup machine.
+<p>
+	That's when I remembered about those fancy jail things that BSD users
+	keep raving about (&lt;3 BSD users) and I have a little experience with
+	chroot so I thought creating a jail like chroot envionment might be the
+	solution. This way I can configure SSH to use the chroot for a user
+	when they login.
+<p>
+	This is the script I came up with a lot of help from [2]
+<pre>
+<code>
+	#!/bin/sh
+
+	# Create an ssh jail for btrbk
+
+	JAIL=/var/jail
+
+	# Create root layout
+	mkdir -p $JAIL/backups
+	mkdir -p $JAIL/bin
+	mkdir -p $JAIL/dev
+	mkdir -p $JAIL/lib
+	mkdir -p $JAIL/proc
+	mkdir -p $JAIL/sbin
+	mkdir -p $JAIL/usr/bin
+	mkdir -p $JAIL/usr/lib
+
+	# Create devices
+	mknod -m 666 $JAIL/dev/null c 1 3
+
+	# Copy binaries
+	cp /bin/sh $JAIL/bin/
+	cp /bin/cat $JAIL/bin/
+	cp /sbin/btrfs $JAIL/sbin/
+	cp /usr/bin/readlink $JAIL/usr/bin/
+
+	# Copy required libraries
+	cp /lib/ld-musl-x86_64.so.1 $JAIL/lib/
+	cp /lib/libblkid.so.1 $JAIL/lib/
+	cp /lib/libuuid.so.1 $JAIL/lib/
+	cp /lib/libz.so.1 $JAIL/lib/
+	cp /usr/lib/liblzo2.so.2 $JAIL/usr/lib/
+	cp /usr/lib/libzstd.so.1 $JAIL/usr/lib/
+
+	# Mount proc
+	mount -t proc /proc $JAIL/proc
+
+	# Mount the data drive
+	mount --bind /media/data $JAIL/backups
+</code>
+</pre>
+<p>
+	See [2] for a more in-depth explanation but the basic run down is as
+	follows
+<ul>
+	<li> Create the directories required for a unix filesystem
+	<li> Create the required <code>/dev</code> special devices (btrbk only
+		needs <code>/dev/null</code>)
+	<li> Mount <code>/proc</code>
+	<li> Copy the binaries needed for btrbk into the places it expects to
+		find them
+	<li> Copy the libraries required for those binaries (which can be found
+		using <code>ldd</code>) into their respective locations
+</ul>
+<p>
+	It probably would be better to use hardlinks for the binaries and
+	libraries as that way they can be easily updated by the package manager
+	however for the particular system I'm deploying this on, this isn't an
+	issue.
+<h2>
+	Security Issues
+</h2>
+<p>
+	Whilst I'm sure there are many others (if you find one, feel free to
+	let me know), there 2 main security problems which I can find
+<ol>
+	<li> The backup data is accessible and could be modified
+	<li> Processes outside the jail are available in <code>/proc</code> in
+		the jail
+</ol>
+<p>
+	The first problem is going to be an issue with almost any setup as the
+	backup program needs access to the btrfs filesystem to manage the
+	backups. Using SSH keys to prevent unauthorized people gaining access
+	to the chroot in helps mitigate this.
+<p>
+	The second problem is one I'm not sure how to best solve. If a bad
+	actor got access to the chroot, they would be able to access
+	information (such as envrionment variables, command line arguments,
+	etc.) about processes running outside the chroot environment,
+	potentially leaking sensitive information. Whilst I'm sure there's a
+	way to restrict what's available in <code>/proc</code> to only
+	processes running in the chroot, more research is required (if anyone
+	can link me to any relevant resources it would be appreciated).
+<h2>
+	References
+</h2>
+<ol>
+	<li> https://digint.ch/btrbk/
+	<li> https://btholt.github.io/complete-intro-to-containers/chroot
+</ol>
+<footer>
+<p>
+	Published YYYY-MM-DD <br>
+	Hayley Hughes &copy; CC BY-ND 4.0 
+<p>
+	<a href="../index.html">&lt;&lt; home</a>
+</footer>
+
