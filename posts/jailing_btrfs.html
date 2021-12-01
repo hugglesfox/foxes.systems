@@ -9,24 +9,26 @@
 <img src="../media/btrbk_jail.png" alt="A screenshot of the commands ls and clear not working in the jail but btrfs does">
 <p>
 	I've finally gotten around to fixing my backup system as for quite a
-	while I haven't had a functional backup system. I use btrfs for my root
-	filesystem and really like btrbk [1] as it's simple and mostly just
-	works. 
+	while I haven't had functional backups (oops). I use btrfs for my root
+	filesystem and really like the backup program btrbk [1] as it's simple,
+	makes use of btrfs' snaphotting features and just works. 
 <p>
 	Btrbk can use btrfs' built in send and receive commands to send
-	snapshots over SSH to a remote machine. This is great except btrbk
-	needs to run the btrfs recieve command as root so that it can create
-	files with the correct permissions. Whilst I'm sure btrbk is well
-	designed and all, I still don't really want to give a perl script full
-	root access on the backup machine.
+	snapshots over SSH to a remote machine. However btrbk needs to run the
+	btrfs recieve command as root so that it can create files with the
+	correct permissions. Whilst I'm sure btrbk is well designed and all, I
+	still don't really want to give a perl script full root access on the
+	backup machine.
 <p>
 	That's when I remembered about those fancy jail things that BSD users
 	keep raving about (&lt;3 BSD users) and I have a little experience with
 	chroot so I thought creating a jail like chroot envionment might be the
 	solution. This way I can configure SSH to use the chroot for a user
-	when they login.
+	when they login, that way that user doesn't have access to the
+	underlying root filesystem and I can control which tools and programs
+	are available to the user.
 <p>
-	This is the script I came up with a lot of help from [2]
+	So this is the script I came up with a lot of help from [2]
 <pre>
 <code>
 	#!/bin/sh
@@ -105,13 +107,14 @@
 	to the chroot in helps mitigate this.
 <p>
 	The second problem is one I'm not sure how to best solve. If a bad
-	actor got access to the chroot, they would be able to access
-	information (such as envrionment variables, command line arguments,
-	etc.) about processes running outside the chroot environment,
-	potentially leaking sensitive information. Whilst I'm sure there's a
-	way to restrict what's available in <code>/proc</code> to only
-	processes running in the chroot, more research is required (if anyone
-	can link me to any relevant resources it would be appreciated).
+	actor were able to login, they would be able to access information
+	about processes running outside the chroot environment (such as
+	envrionment variables, command line arguments, etc.) from
+	<code>/proc</code>, potentially leaking sensitive information. Whilst
+	I'm sure there's a way to restrict what's available in
+	<code>/proc</code> to only processes running in the chroot, more
+	research is required (if anyone can link me to any relevant resources
+	it would be appreciated).
 <h2>
 	References
 </h2>
@@ -121,7 +124,7 @@
 </ol>
 <footer>
 <p>
-	Published YYYY-MM-DD <br>
+	Published 2021-12-01 <br>
 	Hayley Hughes &copy; CC BY-ND 4.0 
 <p>
 	<a href="../index.html">&lt;&lt; home</a>
