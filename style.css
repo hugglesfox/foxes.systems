@@ -1,23 +1,24 @@
 body {
 	/* Set content width to 72 characters and add some padding */
-	margin: 5% auto;
+	margin: 2em auto;
 	max-width: 72ch;
 
-	/* Add some padding for mobile devices */
-	padding: 0 10px;
+	/* Add some padding for screens smaller then 72 ch wide */
+	padding: 0 1em;
 
 	/* Make the font more readable for screen */
-	line-height: 1.6;
+	line-height: 1.5;
 	font-size: 1.2em;
 
-	/* Set colors based on PaperColor theme */
-	background: #eee;
-	color: #444;
+	/* Light mode is best for readability in all environments */
+	background: #fff;
+	color: #333;
 }
 
 h1, h2, h3 {
 	/* Make headings a little tighter */
 	line-height: 1.2;
+	margin: 0;
 }
 
 img {
@@ -25,16 +26,27 @@ img {
 	max-width: 100%;
 }
 
-pre, code {
-	/* Visually differentiate code and preformatted text */
-	background: #fff;
+pre {
+	/* Visually seperate code blocks */
+	background: #eee;
+	padding: 1em 0;
+
+	/* Large line heights doesn't work well for monospaced fonts */
+	line-height: 1.2;
 
 	/* Add scroll bars if needed */
 	overflow: auto;
 }
 
+blockquote {
+	/* Visually seperate quotes */
+	color: #555;
+	padding: 1em 0;
+
+}
+
 footer, figcaption {
-	/* Stylize helper text */
+	/* Stylize nav text */
 	text-align: center;
-	color: #666;
+	color: #555;
 }
