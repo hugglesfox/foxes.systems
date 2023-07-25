@@ -13,17 +13,26 @@ body {
 	/* Light mode is best for readability in all environments */
 	background: #fff;
 	color: #333;
-}
 
-h1, h2, h3 {
-	/* Make headings a little tighter */
-	line-height: 1.2;
-	margin: 0;
+	/* Transitional font stack */
+	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
 }
 
 img {
-	/* Resize images as images don't respect the body max-width */
-	max-width: 100%;
+	/* Make image sizes consistent*/
+	max-width: 80%;
+
+	/* Add some space */
+	padding: 1em;
+
+	/* Center images */
+	display: block;
+	margin: auto;
+}
+
+code {
+	/* Monospaced font stack */
+	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 }
 
 pre {
@@ -42,7 +51,6 @@ blockquote {
 	/* Visually seperate quotes */
 	color: #555;
 	padding: 1em 0;
-
 }
 
 footer, figcaption {
