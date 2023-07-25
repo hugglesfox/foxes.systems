@@ -3,23 +3,24 @@
 <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 <title>X225 Laptop</title>
+<!-- TODO: Take it outside somewhere and get a glam shot -->
 <h1>
-	X225 Laptop
+	The Story of my Laptop
 </h1>
 <p>
-	I needed a laptop for traveling, so I built a laptop based on the
-	Lenovo Thinkpad X220 and Thinkpad X230 which I'm calling the X225.
+	I needed a laptop for basic portable computing, so I built a laptop
+	based on the Lenovo Thinkpad X220 and Thinkpad X230.
 <h2>
 	Requirements
 </h2>
 <p>
 	The primary use case for the laptop will be to act as a device for
-	typing and light web surfing whilst traveling. Therefore I have
-	specified to following are the design requirements
+	typing code and documents and light web surfing whilst traveling.
+	Ideally it should fit the following design requirements
 <ol>
 	<li> Must be easily portable (should fit in a 13" laptop sleeve)
-	<li> Must have a good keyboard 
-	<li> Must be <lt/>$500
+	<li> Must have a good keyboard
+	<li> Must be &lt;$500
 	<li> Should have a long battery life
 	<li> Should be repairable (with replacement parts available)
 	<li> Should be quiet
@@ -27,42 +28,53 @@
 <h2>
 	The Thinkpad X220
 </h2>
+<img src="../media/thinkpad/IMG_0812.jpeg" alt="The thinkpad x220 with the lid
+open, showing the screen and keyboard" \>
 <p>
-	The Lenovo Thinkpad X220 laptop is a classic which is still very well
-	loved to this day and it's easy to see why. It has a great feeling
-	keyboard, small yet built like a tank, can be picked up on the second
-	hand market for relatively cheap and is very modular. So it seemed like
-	a good choice
+	The Lenovo Thinkpad X220 laptop is a classic and well loved to this
+	day. It has a great feeling keyboard, small yet built like a tank, good
+	software support and can be picked up on the second hand market for
+	cheap.
 <p>
 	However using a laptop which was designed 10 years ago does come with
-	some draw backs.
+	some draw backs
 <ul>
-	<li> The 2nd gen Intel Core processor runs hot
+	<li> The 2nd gen Intel Core processor is slow and not very efficient
 	<li> No USB 3.0 ports
 	<li> The screen, whilst IPS, is only 720p
 </ul>
 <h2>
 	The Thinkpad X230
 </h2>
+<img src="../media/thinkpad/IMG_0817.jpeg" alt="The thinkpad x230 with the lid
+closed" \>
 <p>
-	The Lenovo Thinkpad x230 is the next generation up from the X220
-	featuring USB 3.0 ports, an improved cooling design, and a 3rd gen
-	Intel Core processor. The main differences of 3rd gen over 2nd gen is
-	the better onboard graphics and increased efficiency which in
-	combination with the better cooler, makes the X230 run cooler and
-	quieter then the X220. However the X230 has the newer chiclet style
-	keyboard which I'm not as big of a fan of compared to the older
-	membrane keyboard which is on the X220.
+	The Lenovo Thinkpad X230 is the next generation up from the X220
+	featuring
+<ul>
+	<li> A USB 3.0 port
+	<li> 3rd gen Intel Core processor with improved efficiency
+	<li> Improved cooler design
+	<li> The newer chicklet style keyboard
+</ul>
+<p>
+	So why not just use a Thinkpad X230? I dislike the feel of the chicklet
+	keyboard and couldn't find a fully working X230 for a reasonable price.
+<p>
+	Interestingly the Thinkpad X230 has a security vulnerability which
+	allows for the embedded controller to be reprogrammed. This unlocks
+	some neat functionality such as being able to modify the keyboard
+	layout and remove the battery validation which blocks the usage of
+	third party batteries. [1]
 <h2>
-	Combinding the two
+	Combining the two
 </h2>
 <p>
-	The Thinkpad X220 and X230 do share a one main thing  which is the
-	chassis. Therefore a common mod for the X230 is to replace the keyboard
-	with the one from the X220. But at the time for me, there were no
-	undamaged Thinkpad X230's on the market so I decided to do the opposite
-	and install an X230 motherboard into a X220.
-
+	The Thinkpad X220 and X230 are very similar in their physical design.
+	Therefore a common mod for the X230 is to replace the keyboard with the
+	one from the X220. [2] But at the time, there were no undamaged Thinkpad
+	X230's on the market so I decided to do the opposite and install an
+	X230 motherboard into a X220 chassis.
 <h2>
 	The water damaged X230
 </h2>
@@ -71,7 +83,9 @@
 	drive and battery, the case was cracked from being dropped on one of
 	the corners and had what looked to be some minor water damage to the
 	screen. However the ebay listing showed it could boot so I was hopeful
-	that the motherboard was OK.
+	that the motherboard was ok.
+<img src="../media/thinkpad/IMG_0822.jpeg" alt="The mainboard of the thinkpad
+x230 with rust around the CPU socket and corrosion on the io ports" \>
 <p>
 	Upon taking apart the laptop it was very clear that the laptop had
 	serious water damage, possibly from salt water. The bottom of the case
@@ -89,8 +103,10 @@
 	can't be easily removed with isopropyl alcohol. I was able to remove
 	most of it with a citric acid based adhesive remover but that left a
 	orange smelling residue all over the board and the only way to remove
-	it was to give the board a wash in warm soapy water. Electronics are
-	fine around water right?!
+	it was to give the board a wash in warm soapy water. I then left it for
+	a few days to dry out completely.
+<img src="../media/thinkpad/IMG_0867.jpeg" alt="The mainboard of the thinkpad
+x230 being dipped into a sink filled with soapy water" \>
 <h2>
 	Cleaning up the X220
 </h2>
@@ -119,19 +135,78 @@
 	needs to be) longer USB port does pose a problem as it collides with a
 	support on the bottom of the case, pushing the USB port up. The laptop
 	will still go together however that USB port won't line up correctly
-	with it's hole, stopping one from plugging anything into it. Plus I
-	would prefer if the motherboard didn't have to be bent in order for it
-	to fit.
+	with it's hole, stopping one from plugging anything into it. Also
+	bending the motherboard doesn't sound like a great idea.
+<img src="../media/thinkpad/IMG_0897.jpeg" alt="A USB port which doens't line
+up with the cut out in the chassis properly" />
 <p>
 	Luckily this can be solved by filing down the supports a little until
-	the board nicely sits in position.
+	the board nicely sits in position. The shiny spots in the following
+	image were the areas which I filed.
+<img src="../media/thinkpad/IMG_0898.jpeg" alt="The bottom of the chassis,
+showing the supports I needed to file down" />
 <h2>
 	Modding the keyboard
 </h2>
+<p>
+	The keyboard connector pinouts for the X220 and X230 are slightly
+	different such that if you were to directly plug the keyboard in, it
+	would result in 3v3 being shorted to ground. However the pins that do
+	this aren't important to the keyboards functionality (as far as I can
+	tell, looking at the schematic they seem to be some sort of
+	identification pins) so we can just cover them with some electrical
+	tape.
+<img src="../media/thinkpad/IMG_0858.jpeg" alt="The top of the x220 keyboard
+with the function buttons faceplate removed" />
+<p>
+	There are plenty of guides on the internet (such as [2]) which give a
+	step by step guide on how to do this.
+<img src="../media/thinkpad/IMG_0861.jpeg" alt="The keyboard ribbon cable with
+electrical tape covering some of the contact pads" />
+<h2>
+	Removing the supervisor password
+</h2>
+<p>
+	Putting things back together and powering on the Thinkpad X230
+	mainboard, we get greeted by a locked bios.
+<img src="../media/thinkpad/IMG_0853.jpeg" alt="The BIOS lock screen" />
+<p>
+	Fortunately this is easy to fix. All one has to do is short the clock
+	and data pins on the security EEPROM (U42) while entering the bios with
+	a screw driver. The bios will happily ignore that there's a password.
+	From there I cleared the bios and supervisor passwords then removed the
+	screwdriver and saved the changes which overwrote the existing
+	password.
+<img src="../media/thinkpad/IMG_0893.jpeg" alt="A small flat head screw driver
+shorting the data and clock pins of the security EEPROM" />
+<h2>
+	Conclusion
+</h2>
+<p>
+	To finish up I flashed the bios with coreboot, replaced the
+	fan/heatsink assembly with a new one from ebay as the X230 fan was
+	destroyed and the X220 bearings were worn out and brought a new X230
+	battery from Duracell.
+<p>
+	All in all I'm rather happy with the result. My main gripes with it are
+	the lack of a USB-C (I've got a plan to fix that) and a short battery
+	life. I get about 5 hours from a full charge however being able to swap
+	the battery helps.
+<p>
+	Extra photos are available in this blog's git repo. [4]
+<h2>
+	References
+</h2>
+<ol>
+	<li> https://github.com/hamishcoleman/thinkpad-ec
+	<li> https://www.thinkwiki.org/wiki/Install_Classic_Keyboard_on_xx30_Series_ThinkPads
+	<li> https://imgur.com/a/fsRe6
+	<li> https://github.com/hugglesfox/foxes.systems
+</ol>
 <footer>
 <p>
 	Published YYYY-MM-DD <br>
-	Hayley Hughes &copy; CC BY-ND 4.0 
+	Hayley Hughes &copy; CC BY-ND 4.0
 <p>
 	<a href="../index.html">&lt;&lt; home</a>
 </footer>
