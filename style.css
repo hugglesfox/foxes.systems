@@ -10,12 +10,7 @@ body {
 	line-height: 1.5;
 	font-size: 1.2em;
 
-	/* Light mode is best for readability in all environments */
-	background: #fff;
-	color: #333;
-
-	/* Transitional font stack */
-	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+	font-family: ui-serif, serif;
 }
 
 img {
@@ -31,8 +26,7 @@ img {
 }
 
 code {
-	/* Monospaced font stack */
-	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+	font-family: ui-monospace, monospace;
 }
 
 pre {
